@@ -1,0 +1,120 @@
+.playlist-dashboard {
+    .dashboard-content {
+        text-align: left;
+    }
+    
+    .title {
+        /* text-align: center; */
+        /* margin: 0 auto;  */
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 10px;
+        width: fit-content;
+        border-radius: 5px;
+        border: 3px solid rgb(29, 185, 84, 0.3);
+    }
+    
+    .child-container {
+        .card-img {
+            width: 100%;
+            max-width: 100px;
+            height: auto;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        
+        .card {
+            box-sizing: border-box;
+            text-align: left;
+            padding: 10px;
+            min-height: 125px;
+            max-height: 200px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        .card-body {
+            padding: 5px 0;
+            overflow-wrap: anywhere;
+        }
+        
+        .card-title {
+            font-size: 0.9rem;
+        }
+        
+        .card-text {
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+        }
+
+        .card-img-container {
+            position: relative;
+            width: 100%;
+        }
+        
+        .overlay-checkmark {
+            position: absolute;
+            top: 5px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Green-checkmark.svg/1200px-Green-checkmark.svg.png');
+            background-color: rgba(255, 255, 255, 0.3);
+            width: 100%;
+            max-width: 100px;
+            height: auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 50px;
+        }
+        
+        .form-check {
+            display: none;
+        }
+        
+        label {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    
+    /* .parent-container {
+        
+    } */
+    
+    .playlist-card {
+        img {
+            padding-top: 5px;
+            /* width: 100%; */
+            width: 100%;
+            max-width: 75px;
+            height: auto;
+        }
+    
+        padding: 10px;
+        text-align: left;
+        font-size: 0.9rem;
+    }
+    
+    .smart-playlist-card {
+        flex-direction: inherit;
+    
+        .sync {
+            padding-top: 20px;
+        }
+    }
+
+    .track-img {
+        width: 100%;
+        max-width: 75px;
+    }
+
+    .btn-link {
+        /* ... existing styles ... */
+        /* Add the following to make the button look like a link */
+        font-size: 0.8em;
+        padding: 0;
+        text-decoration: underline;
+      }
+
+}
+
