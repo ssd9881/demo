@@ -35,16 +35,57 @@ const CreateSmartPlaylist: React.FC<CreateSmartPlaylistProps> = ({playlists, set
         }));
     };
 
+    // const handleSubmit = () => {
+    //     setCreating(true);
+    //     const childPlaylistIds = Object.keys(selectedChildPlaylists).filter(id => selectedChildPlaylists[id]);
+    //     const user: User = JSON.parse(localStorage.getItem('user') || '{}');
+    //     const smartPlaylistData = {
+    //         parent_playlist_id: parentPlaylistId,
+    //         children: childPlaylistIds,
+    //         owner_id: user.id
+    //     };
+    //     console.log("Sending smart playlist data:", smartPlaylistData);
+    //     addSmartPlaylist(smartPlaylistData).then(() => 
+    //         getSmartPlaylists()
+    //             .then(smartPlaylists => {
+    //                 setSmartPlaylists(smartPlaylists);
+    //                 setParentPlaylistId('');
+    //                 setSelectedChildPlaylists({});
+    //             }))
+    //     .catch(error => console.error(error))
+    //     .finally(() => {
+    //         setCreating(false);
+    //         alert("New Smart Playlist added");
+    //     });
+    // };
     const handleSubmit = () => {
         setCreating(true);
+    
+        // Filter out the selected child playlists
         const childPlaylistIds = Object.keys(selectedChildPlaylists).filter(id => selectedChildPlaylists[id]);
+        // const childPlaylistIds = Object.keys(selectedChildPlaylists).filter(id => selectedChildPlaylists[id]);
+
+    // Debug log
+    console.log("Selected Child Playlists:", childPlaylistIds);
+        // Check if there are selected child playlists
+        if (childPlaylistIds.length === 0) {
+            alert("Please select at least one child playlist.");
+            setCreating(false); // Stop the creation process
+            return;
+        }
+    
         const user: User = JSON.parse(localStorage.getItem('user') || '{}');
+        
+        // Construct the smart playlist data
         const smartPlaylistData = {
             parent_playlist_id: parentPlaylistId,
             children: childPlaylistIds,
             owner_id: user.id
         };
-        console.log(smartPlaylistData);
+    
+        console.log("Smart Playlist data being sent:", smartPlaylistData);
+    
+        // Make the request to add the smart playlist
         addSmartPlaylist(smartPlaylistData).then(() => 
             getSmartPlaylists()
                 .then(smartPlaylists => {
@@ -52,13 +93,13 @@ const CreateSmartPlaylist: React.FC<CreateSmartPlaylistProps> = ({playlists, set
                     setParentPlaylistId('');
                     setSelectedChildPlaylists({});
                 }))
-        .catch(error => console.error(error))
+        .catch(error => console.error("Error creating smart playlist:", error))
         .finally(() => {
             setCreating(false);
             alert("New Smart Playlist added");
         });
     };
-
+    
     return (
         <div id="create-sp" className="scroll-page">
             <div className="parent-container">

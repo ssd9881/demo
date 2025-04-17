@@ -23,3 +23,19 @@ export class TrackDisplay extends Track {
     @Expose()
     artists: string;
 }
+
+export interface TopTrack {
+    id: string;
+    name: string;
+    popularity: number;
+    album: {
+      id: string;
+      name: string;
+      images: { url: string }[];
+    };
+    artists: {
+      id: string;
+      name: string;
+    }[];
+  }
+  
